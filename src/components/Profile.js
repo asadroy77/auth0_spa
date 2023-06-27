@@ -6,6 +6,7 @@ const Profile = () => {
     let {user,error,isLoading,isAuthenticated} = useAuth0()
   return (
     <div>
+      <h1>Profile</h1>
         {user?.name}
     </div>
   )

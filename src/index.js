@@ -5,10 +5,18 @@ import {Auth0Provider} from "@auth0/auth0-react"
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 import AuthenticationProvider from "./store/store"
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 const rootElement = 
 document.getElementById('root');
 const root =createRoot(rootElement);
+
+
+
+ 
+ const queryClient = new QueryClient()
+
+
 // 👇️ if you use TypeScript, add non-null (!) assertion operator //
 
 // const root = createRoot(rootElement!);
@@ -24,9 +32,11 @@ const root =createRoot(rootElement);
           redirect_uri: window.location.origin
         }}
     >
+       <QueryClientProvider client={queryClient}>
       <AuthenticationProvider>
         <App/>
       </AuthenticationProvider>
+      </QueryClientProvider>
     </Auth0Provider>
     </StrictMode>
     // document.getElementById('app')
